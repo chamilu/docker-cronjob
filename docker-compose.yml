@@ -1,8 +1,14 @@
 version: "3"
 services:
+    server:
+        build: server
+        container_name: server
+        ports:
+            - 3000:3000
+
     schedular:
         image: node:8-alpine
-        container_name: crontest
+        container_name: schedular
         volumes:
             - ./cron/root:/etc/crontabs/root
             - ./cron/1min-jobs.sh:/home/cronjobs/1min-jobs.sh
@@ -12,3 +18,5 @@ services:
             echo \"Asia/Singapore\" > /etc/timezone &&\
             apk del tzdata && rm -rf /var/cache/apk/* &&\
             /usr/sbin/crond -f'"
+        ports:
+            - 4000:3000

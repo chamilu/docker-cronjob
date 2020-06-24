@@ -1,4 +1,4 @@
 #!/bin/sh
 
 echo "this is from jobs"
-curl -X GET http://localhost:1027/timestone/label/expiry/v1/processor/trigger/status
+curl -X GET http://server:3000/api/get-users
